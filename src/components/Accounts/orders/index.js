@@ -12,34 +12,39 @@ const Orders = ({ authData }) => {
             customerId: userID * 1, // * 1 to convert to number
         },
     });
-    console.log(data);
+
     return (
         <div className="order">
             {loading && <p>Loading order items...</p>}
             {error && <p>Error : Can not load order items</p>}
             {data?.customer.id !== null
-                ? data?.customer.orders.nodes.map((order) => {
-                    return (
-                        <div key={order.orderKey}>
-                            <div className="card-header">
-                                <h4>Order #{order.orderKey}</h4>
-                                <time>Order Placed: {getFormattedDate(order.date)}</time>
-                                <div>Payment Method: {order.paymentMethodTitle}</div>
-                                <div>Order Status: {order.status}</div>
-                                <div>Total: {order.total}</div>
-                            </div>
-                            <div className="card-body">
-                                {order.lineItems.nodes.map((item) => {
-                                    return (
-                                        <div className="order-item" key={item.product.node.id}>
-                                            <h5>{item.product.node.name}</h5>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                        </div>
-                    );
-                })
+                ? (
+                    <table className="table table-striped">
+                <thead>
+                    <tr>
+                        <td scope="col">Order #</td>
+                        <td scope="col">Date</td>
+                        <td scope="col">Payment Method</td>
+                        <td scope="col">Status</td>
+                        <td scope="col">Total</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {data?.customer.orders.nodes.map((order) => {
+                        return (
+                            <tr key={order.orderKey}>
+                                <td>{order.orderKey}</td>
+                                <td>{getFormattedDate(order.date)}</td>
+                                <td>{order.paymentMethodTitle}</td>
+                                <td>{order.status}</td>
+                                <td>{order.total}</td>
+                            </tr>
+                        );
+                    }
+                    )}
+                </tbody>
+            </table>
+                )
                 : (
                     <div className="p-3">
                         <h4 className="mb-3">No orders found</h4>
