@@ -1,5 +1,5 @@
 import React from "react"
-import Link from "../utils/link"
+// import Link from "../utils/link"
 import Seo from "../components/seo"
 import { gql, useQuery } from "@apollo/client"
 
@@ -29,9 +29,6 @@ const NotFoundPage = () => {
         </div>
         <div className="content-page-orther">
           {data?.page.notfound.contentPage}
-        </div>
-        <div className="link_orther">
-          <Link className="btn" to={data?.page.notfound.link.url} >{data?.page.notfound.link.title}</Link>
         </div>
 
       </div>
