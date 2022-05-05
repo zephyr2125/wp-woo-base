@@ -21,7 +21,8 @@ const Login = () => {
             
             if(isLogin?.data.login.authToken){
                 localStorage.setItem('token_user', isLogin?.data.login.authToken);
-                localStorage.setItem('token_user_username', isLogin?.data.login.user.name);
+                localStorage.setItem('token_user_name', isLogin?.data.login.user.name);
+                localStorage.setItem('token_user_username', isLogin?.data.login.user.username);
                 navigate('/accounts');
             }
             
@@ -41,7 +42,7 @@ const Login = () => {
             <h1>Login</h1>
             { USER.isLogin && USER.userName !== null ? ( 
                 <div>
-                    <h1>Hello, {USER.userName}</h1>
+                    <h1>Hello, {USER.name}</h1>
                     <p>You are logged</p>
                     <button>
                         <Link to="/">Go to Home</Link>

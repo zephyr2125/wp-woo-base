@@ -22,7 +22,7 @@ const Header = () => {
             {
                 USER.isLogin && USER.userName !== null ? (
                     <div className="header_login">
-                        <span className="header_name">Hello, {USER.userName}</span>
+                        <span className="header_name">Hello, {USER.name}</span>
                         <a onClick={LogoutHandler} href="#">Logout</a>
                     </div>
                 ) : (
