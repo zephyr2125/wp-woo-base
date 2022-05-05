@@ -1,21 +1,31 @@
 export const getUser = () => {
-     const USER = {
+    const USER = {
         isLogin: localStorage.getItem('token_user') ? true : false,
         name: localStorage.getItem('token_user_name'),
-        userName: localStorage.getItem('token_user_name')
-     }
-     return USER;
+        id: localStorage.getItem('token_user_id')
+    }
+    return USER;
 }
 
 export const logout = () => {
     localStorage.removeItem('token_user');
     localStorage.removeItem('token_user_name');
-    localStorage.removeItem('token_user_username');
+    localStorage.removeItem('token_user_id');
 
     const USER = {
-       isLogin: null,
-       userName: null,
-       name: null
+        isLogin: null,
+        id: null,
+        name: null
     }
     return USER;
 }
+
+export const getFormattedDate = (dateString) => {
+    if (!dateString) {
+        return "";
+    }
+
+    const date = new Date(dateString);
+
+    return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+};
