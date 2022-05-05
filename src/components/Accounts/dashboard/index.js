@@ -15,6 +15,10 @@ const Dashboard = () => {
             ) : (
                 <>
                     <h1>Hello, {USER.name}</h1>
+                    <section>
+                        From your account dashboard you can view your recent orders, manage
+                        your shipping and billing addresses
+                    </section>
                 </>
             )}
         </>
