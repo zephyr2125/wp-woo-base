@@ -1,32 +1,24 @@
 import React from "react";
-import { isEmpty } from "lodash";
+import { navigate } from "gatsby";
+
+import { getUser } from "../../../func/functions";
 
 const Dashboard = () => {
-  
 
+    const USER = getUser();
 
-  return (
-    <div className="card-body">
-      <div className="">
-        {!isEmpty(user.firstName) || !isEmpty(user.lastName) ? (
-          <p>
-            Hello{" "}
-            <strong>
-              {user.firstName} {user.lastName}!
-            </strong>
-          </p>
-        ) : (
-          <p>
-            Hello <strong>{user.username}!</strong>
-          </p>
-        )}
-        <section>
-          From your account dashboard you can view your recent orders, manage
-          your shipping and billing addresses
-        </section>
-      </div>
-    </div>
-  );
+    return (
+        <>
+            <h1>Accounts</h1>
+            {!USER.isLogin ? (
+                navigate('/accounts/login')
+            ) : (
+                <>
+                    <h1>Hello, {USER.name}</h1>
+                </>
+            )}
+        </>
+    );
 };
 
 export default Dashboard;
