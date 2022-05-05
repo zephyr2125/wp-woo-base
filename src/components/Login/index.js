@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { navigate, Link } from "gatsby";
 
+import { getUser, logout } from "../../func/functions"
+
 import { LOGIN } from "../apis/LoginAPIs";
 
 const Login = () => {
@@ -9,13 +11,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [err, setErr] = useState('');
 
-    // get token from local storage
-    const token_user = localStorage.getItem('token_user');
-    
-    // if token is exist, then show logout button
-    const isLogin = token_user ? true : false;
-    const userName = localStorage.getItem('token_user_username');
-
+    const USER = getUser();
 
     const [login] = useMutation(LOGIN);
 
@@ -26,7 +22,7 @@ const Login = () => {
             if(isLogin?.data.login.authToken){
                 localStorage.setItem('token_user', isLogin?.data.login.authToken);
                 localStorage.setItem('token_user_username', isLogin?.data.login.user.name);
-                navigate('/');
+                navigate('/accounts');
             }
             
         }
@@ -36,17 +32,16 @@ const Login = () => {
     }
 
     const LogoutHandler = () => {
-        localStorage.removeItem('token_user');
-        localStorage.removeItem('username_gatsby_demo');
+        logout();
         navigate('/accounts/login');
     }
 
     return ( 
         <>
             <h1>Login</h1>
-            { isLogin ? ( 
+            { USER.isLogin && USER.userName !== null ? ( 
                 <div>
-                    <h1>Hello, {userName}</h1>
+                    <h1>Hello, {USER.userName}</h1>
                     <p>You are logged</p>
                     <button>
                         <Link to="/">Go to Home</Link>

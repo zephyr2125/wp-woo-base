@@ -1,17 +1,14 @@
 import React from "react";
 import { navigate, Link } from "gatsby";
 
+import { getUser, logout } from "../../func/functions"
+
 const Header = () => {
 
-    // get token from local storage
-    const token_user_public_blog = localStorage.getItem('token_user');
-    // if token is exist, then show logout button
-    const isLogin = token_user_public_blog ? true : false;
-    const userName = localStorage.getItem('token_user_username');
+    const USER = getUser();
 
     const LogoutHandler = () => {
-        localStorage.removeItem('token_user');
-        localStorage.removeItem('token_user_username');
+        logout()
         navigate('/accounts/login');
     }
 
@@ -23,9 +20,9 @@ const Header = () => {
                 </div>
             </div>
             {
-                isLogin && userName ? (
+                USER.isLogin && USER.userName !== null ? (
                     <div className="header_login">
-                        <span className="header_name">Hello, {userName}</span>
+                        <span className="header_name">Hello, {USER.userName}</span>
                         <a onClick={LogoutHandler} href="#">Logout</a>
                     </div>
                 ) : (
