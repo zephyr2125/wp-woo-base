@@ -22,7 +22,7 @@ const Login = () => {
             if(isLogin?.data.login.authToken){
                 localStorage.setItem('token_user', isLogin?.data.login.authToken);
                 localStorage.setItem('token_user_name', isLogin?.data.login.user.name);
-                localStorage.setItem('token_user_username', isLogin?.data.login.user.username);
+                localStorage.setItem('token_user_id', isLogin?.data.login.user.databaseId);
                 navigate('/accounts');
             }
             

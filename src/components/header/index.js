@@ -1,14 +1,14 @@
 import React from "react";
 import { navigate, Link } from "gatsby";
 
+
 import { getUser, logout } from "../../func/functions"
 
 const Header = () => {
-
     const USER = getUser();
 
     const LogoutHandler = () => {
-        logout()
+        logout();
         navigate('/accounts/login');
     }
 

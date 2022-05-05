@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Dashboard from "./dashboard";
 import Orders from "./orders";
-import { getUser, logout } from "../../func/functions";
+import { getUser } from "../../func/functions";
 import Addresses from "./addresses";
 import AccountDetails from "./account-details";
 

@@ -35,3 +35,14 @@
 .account-details-content {
     min-height: 355px;
 }
+
+.account-details-menu {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    justify-content: space-between;
+}
+
+.tabitem {
+    width: 100%;
+}
