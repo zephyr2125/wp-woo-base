@@ -7,6 +7,7 @@ export const GET_CUSTOMER_ORDER = gql `
             orders {
                 nodes {
                     id
+                    databaseId
                     orderKey
                     date
                     status
