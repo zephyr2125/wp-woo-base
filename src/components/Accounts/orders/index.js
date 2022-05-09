@@ -40,7 +40,7 @@ const Orders = ({ authData }) => {
                                 <td>{order.status}</td>
                                 <td dangerouslySetInnerHTML={{__html: order.total}} />
                                 <td>
-                                    <Link to={`/accounts/order/${order.databaseId}`}>
+                                    <Link to={`/accounts/orders/view-order?id=${order.databaseId}`}>
                                         <button className="btn btn-primary">View</button>
                                     </Link>
                                 </td>

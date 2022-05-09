@@ -22,7 +22,9 @@ const Header = () => {
             {
                 USER.isLogin && USER.userName !== null ? (
                     <div className="header_login">
-                        <span className="header_name">Hello, {USER.name}</span>
+                        <Link to="/accounts">
+                            <span className="header_name">Hello, {USER.name}</span>
+                        </Link>
                         <a onClick={LogoutHandler} href="#">Logout</a>
                     </div>
                 ) : (
