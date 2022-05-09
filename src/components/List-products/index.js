@@ -3,6 +3,8 @@ import { Link } from "gatsby";
 
 import { useQuery, gql } from "@apollo/client";
 
+import AddToCart from "../Cart/add-to-cart-button";
+
 const IndexPage = () => {
   const GET_DATA = gql`
   query getData {
@@ -50,7 +52,7 @@ const IndexPage = () => {
                     <Link to={`/product/${item.slug}`}>{item.name}</Link>
                     <div className="product__price">{item.price}</div>
                   </div>
-                  {/* <AddToCart idProduct={item.databaseId} /> */}
+                  <AddToCart idProduct={item.databaseId} />
                 </div>
               ))}
           </div>
