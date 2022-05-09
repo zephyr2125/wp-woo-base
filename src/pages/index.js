@@ -4,7 +4,6 @@ import ListProducts from "../components/List-products";
 
 const IndexPage = () => {
 
-
   return (
     <div className="home__container">
       <Seo title="Homepage" />
