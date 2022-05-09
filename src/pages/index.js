@@ -1,5 +1,6 @@
 import React from "react";
 import Seo from "../components/seo";
+import ListProducts from "../components/List-products"; 
 
 const IndexPage = () => {
 
@@ -9,6 +10,7 @@ const IndexPage = () => {
       <Seo title="Homepage" />
       <div className="home__wrapper">
         <div>Home</div>
+        <ListProducts />
       </div>
     </div>
   )
