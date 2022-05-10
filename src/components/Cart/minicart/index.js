@@ -36,21 +36,35 @@ const Minicart = () => {
                     </div>
                     {showMiniCart && (
                         <div className="minicart__content">
-                            {cart.map((item) => {
-                                return (
-                                    <div className="minicart__item" key={item.id}>
-                                        <div className="minicart__item__name">
-                                            <Link to={`/product/${item.slug}`}>{item.name}</Link>
-                                        </div>
-                                        <div className="minicart__item__quantity">
-                                            <span>{item.quantity}</span>
-                                        </div>
-                                        <div className="minicart__item__price">
-                                            <span>{item.price}</span>
-                                        </div>
-                                    </div>
-                                );
-                            })}
+                            <table className="minicart__table">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {cart.map((item) => {
+                                        return (
+                                            <tr key={item.id}>
+                                                <td>
+                                                    <Link to={`/product/${item.slug}`}>{item.name}</Link>
+                                                </td>
+                                                <td>{item.quantity}</td>
+                                                <td dangerouslySetInnerHTML={{__html: item.price}} />
+                                            </tr>
+                                        );
+                                    })}
+                                </tbody>
+                            </table>
+                            <div className="minicart__total">
+                                <div className="minicart__total-title">Total</div>
+                                <div className="minicart__total-price">{cart.reduce((total, item) => {
+                                    return total + item.price * item.quantity;
+                                }
+                                , 0)}</div>
+                            </div>
                         </div>
                     )}
                 </div>
