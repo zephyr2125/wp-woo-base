@@ -13,10 +13,10 @@ const Header = () => {
         navigate('/accounts/login');
     }
 
-    return ( 
+    return (
         <section className="header">
             <div className="header_wrapper">
-                <div aria-hidden="true" className="header_logo" onClick={() => { navigate("/")}}>
+                <div aria-hidden="true" className="header_logo" onClick={() => { navigate("/") }}>
                     <div>Woo</div>
                 </div>
             </div>
@@ -36,7 +36,7 @@ const Header = () => {
             }
             <Minicart />
         </section>
-     );
+    );
 }
- 
+
 export default Header;

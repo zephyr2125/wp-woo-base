@@ -30,7 +30,7 @@ const Register = () => {
             console.log(err);
         }
     }
-    return ( 
+    return (
         <>
             <h1>Register</h1>
             <form>
@@ -58,7 +58,7 @@ const Register = () => {
             <button onClick={registerHandler} className="btn">Register</button>
 
         </>
-     );
+    );
 }
- 
+
 export default Register;

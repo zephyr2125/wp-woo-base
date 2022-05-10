@@ -1,6 +1,6 @@
 import { gql } from "graphql-tag";
 
-export const GET_CUSTOMER_ORDER = gql `
+export const GET_CUSTOMER_ORDER = gql`
     query getCustomerOrder($customerId: Int!) {
         customer(customerId: $customerId) {
             id
@@ -28,7 +28,7 @@ export const GET_CUSTOMER_ORDER = gql `
     }
 `;
 
-export const GET_ACCOUNT_DETAIL = gql `
+export const GET_ACCOUNT_DETAIL = gql`
     query getAccountDetails($id: ID!) {
         user(id: $id, idType: DATABASE_ID) {
             id

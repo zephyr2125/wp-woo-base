@@ -1,12 +1,12 @@
 import React from "react";
 
 const Index = () => {
-    
-    return ( 
+
+    return (
         <>
             <h1>Addresses</h1>
         </>
-     );
+    );
 }
- 
+
 export default Index;
