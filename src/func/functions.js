@@ -12,11 +12,14 @@ export const logout = () => {
     localStorage.removeItem('token_user');
     localStorage.removeItem('token_user_name');
     localStorage.removeItem('token_user_id');
+    localStorage.removeItem('cart');
+    localStorage.removeItem('cart-total');
 
     const USER = {
         isLogin: null,
         id: null,
-        name: null
+        name: null,
+        cart: [],
     }
     return USER;
 }

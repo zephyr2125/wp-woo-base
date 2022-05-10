@@ -1,14 +1,20 @@
 import React, { useContext } from "react";
+import { useMutation } from "@apollo/client";
 
 import { getUser, getQuantityCart } from "../../../func/functions";
 
 import { Context } from "../../../context";
 
+import { ADD_TO_CART } from "../../apis/CartAPIs";
+import { random } from "lodash";
+
 const AddToCart = (props) => {
     const product = props;
     const { setAddCart } = useContext(Context);
 
-    const handleAddToCart = () => {
+    const [ addCart ] = useMutation(ADD_TO_CART);
+
+    const handleAddToCart = async () => {
         const user = getUser();
         const cart = user.cart;
         var check = false;
@@ -33,9 +39,20 @@ const AddToCart = (props) => {
             cart.push(productAddCart);
         }
 
-        getQuantityCart(cart)
-        localStorage.setItem("cart", JSON.stringify(cart));
-        setAddCart(getQuantityCart(cart));
+        if(!user.isLogin){
+            getQuantityCart(cart)
+            localStorage.setItem("cart", JSON.stringify(cart));
+        }
+        if(user.isLogin) {
+            const addCartResult = await addCart({
+                variables: {
+                    productId: product.idProduct,
+                    quantity: product.quantity,
+                }
+            });
+            console.log(addCartResult);
+        }
+        setAddCart(random(1, 99999));
     }
 
     return ( 

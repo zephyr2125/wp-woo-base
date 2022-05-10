@@ -23,6 +23,8 @@ const Login = () => {
                 localStorage.setItem('token_user', isLogin?.data.login.authToken);
                 localStorage.setItem('token_user_name', isLogin?.data.login.user.name);
                 localStorage.setItem('token_user_id', isLogin?.data.login.user.databaseId);
+                localStorage.removeItem('cart');
+                localStorage.removeItem('cart-total');
                 navigate('/accounts');
             }
             

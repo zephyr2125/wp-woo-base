@@ -1,7 +1,9 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link } from "gatsby";
+import { useQuery } from "@apollo/client";
 
-import { getUser, getTotalCartQty, getQuantityCart } from "../../../func/functions";
+import { getUser, getTotalCartQty } from "../../../func/functions";
+import { GET_CART_ITEMS } from "../../apis/CartAPIs";
 
 import { Context } from "../../../context";
 
@@ -13,11 +15,25 @@ const Minicart = () => {
 
     useEffect(() => {
         const user = getUser();
-        const qtyCart = getTotalCartQty();
-        
-        setCart(user.cart);
 
-        setQty(qtyCart);
+        if(!user.isLogin){
+            const qtyCart = getTotalCartQty();
+            
+            setCart(user.cart);
+
+            setQty(qtyCart);
+        }
+
+        // if(user.isLogin){
+        //     setQty(0); 
+
+        //     const { data } = useQuery(GET_CART_ITEMS);
+
+        //     if(data){
+        //         setCart(data?.cart.contents.nodes);
+        //         setQty(data?.cart.contents.itemCount);
+        //     }
+        // }
 
     }, [addCart]);
 
@@ -47,12 +63,12 @@ const Minicart = () => {
                                 <tbody>
                                     {cart.map((item) => {
                                         return (
-                                            <tr key={item.id}>
+                                            <tr key={item.product.node.id}>
                                                 <td>
-                                                    <Link to={`/product/${item.slug}`}>{item.name}</Link>
+                                                    <Link to={`/product/${item.product.node.slug}`}>{item.product.node.name}</Link>
                                                 </td>
                                                 <td>{item.quantity}</td>
-                                                <td dangerouslySetInnerHTML={{__html: item.price}} />
+                                                <td dangerouslySetInnerHTML={{__html: item.total}} />
                                             </tr>
                                         );
                                     })}
