@@ -27,3 +27,16 @@ export const GET_CUSTOMER_ORDER = gql `
         }
     }
 `;
+
+const GET_ACCOUNT_DETAIL = gql`
+    query getAccountDetails($id: ID!) {
+        user(id: $id, idType: DATABASE_ID) {
+            id
+            firstName
+            lastName
+            name
+            username
+            email
+        }
+    }
+`;
