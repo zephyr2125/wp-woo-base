@@ -1,10 +1,34 @@
 import React from "react";
 
+import { getUser, getQuantityCart } from "../../../func/functions";
+
 const AddToCart = (props) => {
-    const productId = props.idProduct;
+    const product = props;
 
     const handleAddToCart = () => {
-        console.log(productId);
+        const user = getUser();
+        const cart = user.cart;
+        var check = false;
+
+        const productAddCart = {
+            id: product.idProduct,
+            quantity: product.quantity
+        };
+
+        cart.map((item) => {
+            if(productAddCart.id === item.id) {
+                item.quantity += productAddCart.quantity;
+                check = true;
+                return;
+            }
+        });
+
+        if(!check) {
+            cart.push(productAddCart);
+        }
+
+        getQuantityCart(cart)
+        localStorage.setItem("cart", JSON.stringify(cart));
     }
 
     return ( 

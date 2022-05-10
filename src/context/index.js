@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 export const Context = React.createContext();
 
 export const AppProvider = (props) => {
-    const [userID, setUserID] = useState({});
+    const [addCart, setAddCart] = useState(false);
     return (
         <Context.Provider
             value={{
-                userID,
-                setUserID
+                addCart,
+                setAddCart
             }}
         >
             {props.children}

@@ -52,7 +52,10 @@ const IndexPage = () => {
                     <Link to={`/product/${item.slug}`}>{item.name}</Link>
                     <div className="product__price">{item.price}</div>
                   </div>
-                  <AddToCart idProduct={item.databaseId} />
+                  <AddToCart 
+                    idProduct={item.databaseId}
+                    quantity={1}
+                  />
                 </div>
               ))}
           </div>

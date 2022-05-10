@@ -2,7 +2,8 @@ export const getUser = () => {
     const USER = {
         isLogin: localStorage.getItem('token_user') ? true : false,
         name: localStorage.getItem('token_user_name'),
-        id: localStorage.getItem('token_user_id')
+        id: localStorage.getItem('token_user_id'),
+        cart: localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [],
     }
     return USER;
 }
@@ -29,3 +30,14 @@ export const getFormattedDate = (dateString) => {
 
     return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
 };
+
+export const getQuantityCart = (cart) => {
+    let quantity = 0;
+
+    cart.forEach(item => {
+        quantity += item.quantity;
+    });
+
+    localStorage.setItem('cart-total', JSON.stringify(quantity));
+    return quantity;
+}
