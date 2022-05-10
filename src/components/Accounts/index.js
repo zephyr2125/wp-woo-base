@@ -41,14 +41,14 @@ const TabItemComponent = ({
   isActive = false,
 }) => {
   return (
-  	<div className={isActive ? "tabitem" : "tabitem tabitem--inactive"}>
-	    <button
-		    onClick={onItemClicked}
-		    style={{ width: '100%' }}
-	    >
-		    <i className={icon} />
-		    <p className="tabitem__title">{title}</p>
-	    </button>
+    <div className={isActive ? "tabitem" : "tabitem tabitem--inactive"}>
+      <button
+        onClick={onItemClicked}
+        style={{ width: '100%' }}
+      >
+        <i className={icon} />
+        <p className="tabitem__title">{title}</p>
+      </button>
     </div>
   );
 };
@@ -60,15 +60,15 @@ const CustomerAccount = ({ handleLogout }) => {
     <div className="row">
       <div className="account-details-menu col-3">
         {tabItems.map(({ id, icon, title }) =>
-         
-        <TabItemComponent
+
+          <TabItemComponent
             key={title}
             icon={icon}
             title={title}
             onItemClicked={() => setActive(id)}
             isActive={active === id}
-        />
-          
+          />
+
         )}
       </div>
       <div className="account-details-content card col-9 px-0">

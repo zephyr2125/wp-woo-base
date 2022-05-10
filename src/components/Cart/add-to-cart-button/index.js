@@ -12,7 +12,7 @@ const AddToCart = (props) => {
     const product = props;
     const { setAddCart } = useContext(Context);
 
-    const [ addCart ] = useMutation(ADD_TO_CART);
+    const [addCart] = useMutation(ADD_TO_CART);
 
     const handleAddToCart = async () => {
         const user = getUser();
@@ -28,22 +28,22 @@ const AddToCart = (props) => {
         };
 
         cart.map((item) => {
-            if(productAddCart.id === item.id) {
+            if (productAddCart.id === item.id) {
                 item.quantity += productAddCart.quantity;
                 check = true;
                 return;
             }
         });
 
-        if(!check) {
+        if (!check) {
             cart.push(productAddCart);
         }
 
-        if(!user.isLogin){
+        if (!user.isLogin) {
             getQuantityCart(cart)
             localStorage.setItem("cart", JSON.stringify(cart));
         }
-        if(user.isLogin) {
+        if (user.isLogin) {
             const addCartResult = await addCart({
                 variables: {
                     productId: product.idProduct,
@@ -55,13 +55,13 @@ const AddToCart = (props) => {
         setAddCart(random(1, 99999));
     }
 
-    return ( 
+    return (
         <div className="add_to_cart" onClick={handleAddToCart}>
             <div className="add_to_cart__wrapper">
                 <div className="add_to_cart__title">Add to cart</div>
             </div>
         </div>
-     );
+    );
 }
- 
+
 export default AddToCart;

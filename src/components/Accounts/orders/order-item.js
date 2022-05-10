@@ -61,9 +61,9 @@ const Order = (props) => {
                             return (
                                 <tr key={item.product.node.id}>
                                     <td>{item.product.node.name}</td>
-                                    <td dangerouslySetInnerHTML={{__html: item.product.node.totalSales}} />
-                                    <td dangerouslySetInnerHTML={{__html: item.product.node.price}} />
-                                    <td dangerouslySetInnerHTML={{__html: item.product.node.totalSales * item.product.node.price}} />
+                                    <td dangerouslySetInnerHTML={{ __html: item.product.node.totalSales }} />
+                                    <td dangerouslySetInnerHTML={{ __html: item.product.node.price }} />
+                                    <td dangerouslySetInnerHTML={{ __html: item.product.node.totalSales * item.product.node.price }} />
                                 </tr>
                             );
                         }
@@ -73,19 +73,19 @@ const Order = (props) => {
                 <div className="order-total">
                     <div className="order-total-item">
                         <span className="order-total-item-label">Subtotal</span>
-                        <span className="order-total-item-amount" dangerouslySetInnerHTML={{__html: data?.order.subtotal}} />
+                        <span className="order-total-item-amount" dangerouslySetInnerHTML={{ __html: data?.order.subtotal }} />
                     </div>
                     <div className="order-total-item">
                         <span className="order-total-item-label">Shipping</span>
-                        <span className="order-total-item-amount" dangerouslySetInnerHTML={{__html: data?.order.shippingTax}} />
+                        <span className="order-total-item-amount" dangerouslySetInnerHTML={{ __html: data?.order.shippingTax }} />
                     </div>
                     <div className="order-total-item">
                         <span className="order-total-item-label">Tax</span>
-                        <span className="order-total-item-amount" dangerouslySetInnerHTML={{__html: data?.order.totalTax}} />
+                        <span className="order-total-item-amount" dangerouslySetInnerHTML={{ __html: data?.order.totalTax }} />
                     </div>
                     <div className="order-total-item">
                         <span className="order-total-item-label">Total</span>
-                        <span className="order-total-item-amount" dangerouslySetInnerHTML={{__html: data?.order.total}} />
+                        <span className="order-total-item-amount" dangerouslySetInnerHTML={{ __html: data?.order.total }} />
                     </div>
                 </div>
             </div>

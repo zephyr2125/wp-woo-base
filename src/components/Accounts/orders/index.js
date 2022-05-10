@@ -20,36 +20,36 @@ const Orders = ({ authData }) => {
             {data?.customer.id !== null
                 ? (
                     <table className="table table-striped">
-                <thead>
-                    <tr>
-                        <td scope="col">Order #</td>
-                        <td scope="col">Date</td>
-                        <td scope="col">Payment Method</td>
-                        <td scope="col">Status</td>
-                        <td scope="col">Total</td>
-                        <td scope="col">Action</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {data?.customer.orders.nodes.map((order) => {
-                        return (
-                            <tr key={order.databaseId}>
-                                <td>#{order.databaseId}</td>
-                                <td>{getFormattedDate(order.date)}</td>
-                                <td>{order.paymentMethodTitle}</td>
-                                <td>{order.status}</td>
-                                <td dangerouslySetInnerHTML={{__html: order.total}} />
-                                <td>
-                                    <Link to={`/accounts/orders/view-order?id=${order.databaseId}`}>
-                                        <button className="btn btn-primary">View</button>
-                                    </Link>
-                                </td>
+                        <thead>
+                            <tr>
+                                <td scope="col">Order #</td>
+                                <td scope="col">Date</td>
+                                <td scope="col">Payment Method</td>
+                                <td scope="col">Status</td>
+                                <td scope="col">Total</td>
+                                <td scope="col">Action</td>
                             </tr>
-                        );
-                    }
-                    )}
-                </tbody>
-            </table>
+                        </thead>
+                        <tbody>
+                            {data?.customer.orders.nodes.map((order) => {
+                                return (
+                                    <tr key={order.databaseId}>
+                                        <td>#{order.databaseId}</td>
+                                        <td>{getFormattedDate(order.date)}</td>
+                                        <td>{order.paymentMethodTitle}</td>
+                                        <td>{order.status}</td>
+                                        <td dangerouslySetInnerHTML={{ __html: order.total }} />
+                                        <td>
+                                            <Link to={`/accounts/orders/view-order?id=${order.databaseId}`}>
+                                                <button className="btn btn-primary">View</button>
+                                            </Link>
+                                        </td>
+                                    </tr>
+                                );
+                            }
+                            )}
+                        </tbody>
+                    </table>
                 )
                 : (
                     <div className="p-3">

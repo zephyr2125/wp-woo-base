@@ -16,10 +16,10 @@ const Login = () => {
     const [login] = useMutation(LOGIN);
 
     const handleLogin = async () => {
-        try{
-            const isLogin  = await login({ variables: { username, password } });
-            
-            if(isLogin?.data.login.authToken){
+        try {
+            const isLogin = await login({ variables: { username, password } });
+
+            if (isLogin?.data.login.authToken) {
                 localStorage.setItem('token_user', isLogin?.data.login.authToken);
                 localStorage.setItem('token_user_name', isLogin?.data.login.user.name);
                 localStorage.setItem('token_user_id', isLogin?.data.login.user.databaseId);
@@ -27,9 +27,9 @@ const Login = () => {
                 localStorage.removeItem('cart-total');
                 navigate('/accounts');
             }
-            
+
         }
-        catch(err){
+        catch (err) {
             setErr(err.message);
         }
     }
@@ -39,19 +39,19 @@ const Login = () => {
         navigate('/accounts/login');
     }
 
-    return ( 
+    return (
         <>
             <h1>Login</h1>
-            { USER.isLogin && USER.userName !== null ? ( 
+            {USER.isLogin && USER.userName !== null ? (
                 <div>
                     <h1>Hello, {USER.name}</h1>
                     <p>You are logged</p>
                     <button>
                         <Link to="/">Go to Home</Link>
                     </button>
-                    <button 
+                    <button
                         onClick={LogoutHandler}>
-                            Logout
+                        Logout
                     </button>
                 </div>
             ) : (
@@ -74,7 +74,7 @@ const Login = () => {
                 </>
             )}
         </>
-     );
+    );
 }
- 
+
 export default Login;

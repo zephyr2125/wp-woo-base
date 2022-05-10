@@ -16,9 +16,9 @@ const Minicart = () => {
     useEffect(() => {
         const user = getUser();
 
-        if(!user.isLogin){
+        if (!user.isLogin) {
             const qtyCart = getTotalCartQty();
-            
+
             setCart(user.cart);
 
             setQty(qtyCart);
@@ -40,9 +40,9 @@ const Minicart = () => {
     const handlerShowMiniCart = () => {
         setShowMiniCart(!showMiniCart);
     }
-    
 
-    return ( 
+
+    return (
         <>
             <div className="minicart">
                 <div className="minicart__wrapper">
@@ -68,7 +68,7 @@ const Minicart = () => {
                                                     <Link to={`/product/${item.product.node.slug}`}>{item.product.node.name}</Link>
                                                 </td>
                                                 <td>{item.quantity}</td>
-                                                <td dangerouslySetInnerHTML={{__html: item.total}} />
+                                                <td dangerouslySetInnerHTML={{ __html: item.total }} />
                                             </tr>
                                         );
                                     })}
@@ -79,7 +79,7 @@ const Minicart = () => {
                                 <div className="minicart__total-price">{cart.reduce((total, item) => {
                                     return total + item.price * item.quantity;
                                 }
-                                , 0)}</div>
+                                    , 0)}</div>
                             </div>
                             <div className="minicart__button">
                                 <Link to="/cart" className="minicart__button-link">View cart</Link>
@@ -90,7 +90,7 @@ const Minicart = () => {
             </div>
 
         </>
-     );
+    );
 }
- 
+
 export default Minicart;
