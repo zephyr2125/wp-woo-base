@@ -3,8 +3,8 @@ import { gql, useQuery } from "@apollo/client";
 
 import { GET_ACCOUNT_DETAIL } from "../../apis/AccountsAPIs"
 
-const Index = () => {
-    let id_user = localStorage.getItem('token_user_id');
+const Index = ({ authData }) => {
+    let id_user = authData.id;
    
     const { data } = useQuery(GET_ACCOUNT_DETAIL, {
         variables: {
