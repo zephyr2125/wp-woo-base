@@ -57,6 +57,7 @@ const IndexPage = () => {
                     quantity={1}
                     price={item.price}
                     name={item.name}
+                    slug={item.slug}
                   />
                 </div>
               ))}

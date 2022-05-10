@@ -18,6 +18,7 @@ const AddToCart = (props) => {
             quantity: product.quantity,
             name: product.name,
             price: product.price,
+            slug: product.slug,
         };
 
         cart.map((item) => {

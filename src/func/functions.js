@@ -45,6 +45,5 @@ export const getQuantityCart = (cart) => {
 export const getTotalCartQty = () => {
     let quantity = 0;
     quantity = localStorage.getItem('cart-total') ? JSON.parse(localStorage.getItem('cart-total')) : 0;
-    console.log(quantity);
     return quantity * 1;
 }
