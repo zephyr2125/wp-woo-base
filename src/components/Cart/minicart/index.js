@@ -65,6 +65,9 @@ const Minicart = () => {
                                 }
                                 , 0)}</div>
                             </div>
+                            <div className="minicart__button">
+                                <Link to="/cart" className="minicart__button-link">View cart</Link>
+                            </div>
                         </div>
                     )}
                 </div>
