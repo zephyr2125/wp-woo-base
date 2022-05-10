@@ -41,3 +41,10 @@ export const getQuantityCart = (cart) => {
     localStorage.setItem('cart-total', JSON.stringify(quantity));
     return quantity;
 }
+
+export const getTotalCartQty = () => {
+    let quantity = 0;
+    quantity = localStorage.getItem('cart-total') ? JSON.parse(localStorage.getItem('cart-total')) : 0;
+    console.log(quantity);
+    return quantity * 1;
+}

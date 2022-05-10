@@ -1,20 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from "gatsby";
 
-import { getUser, getQuantityCart } from "../../../func/functions";
+import { getUser, getTotalCartQty, getQuantityCart } from "../../../func/functions";
 
+import { Context } from "../../../context";
 
 const Minicart = () => {
-    const [quantity, setQuantity] = useState(0);
+    const [qty, setQty] = useState();
     const [cart, setCart] = useState({});
+    const { addCart } = useContext(Context);
 
     useEffect(() => {
         const user = getUser();
-        const cart = user.cart;
-        setCart(cart);
-        const quantity = getQuantityCart(cart);
-        setQuantity(quantity);
-    }, [cart]);
+        const qtyCart = getTotalCartQty();
+        
+        setCart(user.cart);
+
+        setQty(qtyCart);
+
+    }, [addCart]);
+    
 
     return ( 
         <>
@@ -22,9 +27,9 @@ const Minicart = () => {
                 <div className="minicart__wrapper">
                     <div className="minicart__title">
                         <span>My cart</span>
-                        <span className="minicart__quantity">({quantity})</span>
+                        <span className="minicart__quantity">({qty})</span>
                     </div>
-                    </div>
+                </div>
             </div>
 
         </>

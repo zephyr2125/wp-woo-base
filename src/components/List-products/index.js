@@ -55,6 +55,8 @@ const IndexPage = () => {
                   <AddToCart 
                     idProduct={item.databaseId}
                     quantity={1}
+                    price={item.price}
+                    name={item.name}
                   />
                 </div>
               ))}

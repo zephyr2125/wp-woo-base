@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { getUser, getQuantityCart } from "../../../func/functions";
 
+import { Context } from "../../../context";
+
 const AddToCart = (props) => {
     const product = props;
+    const { setAddCart } = useContext(Context);
 
     const handleAddToCart = () => {
         const user = getUser();
@@ -12,7 +15,9 @@ const AddToCart = (props) => {
 
         const productAddCart = {
             id: product.idProduct,
-            quantity: product.quantity
+            quantity: product.quantity,
+            name: product.name,
+            price: product.price,
         };
 
         cart.map((item) => {
@@ -29,6 +34,7 @@ const AddToCart = (props) => {
 
         getQuantityCart(cart)
         localStorage.setItem("cart", JSON.stringify(cart));
+        setAddCart(getQuantityCart(cart));
     }
 
     return ( 
