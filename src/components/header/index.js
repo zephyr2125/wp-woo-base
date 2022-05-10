@@ -1,8 +1,9 @@
 import React from "react";
 import { navigate, Link } from "gatsby";
 
-
 import { getUser, logout } from "../../func/functions"
+
+import Minicart from "../Cart/minicart";
 
 const Header = () => {
     const USER = getUser();
@@ -33,7 +34,7 @@ const Header = () => {
                     </div>
                 )
             }
-            
+            <Minicart />
         </section>
      );
 }
