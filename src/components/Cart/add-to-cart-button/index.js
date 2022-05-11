@@ -13,7 +13,7 @@ const AddToCart = (props) => {
     const product = props;
     const { setAddCart } = useContext(Context);
 
-    const [addCart] = useMutation(ADD_TO_CART);
+    const [ addCart, { loading, error }] = useMutation(ADD_TO_CART);
 
     const user = getUser();
 
@@ -65,7 +65,29 @@ const AddToCart = (props) => {
             {user.isLogin ? (
                 <div className="add_to_cart" onClick={handleAddToCart}>
                     <div className="add_to_cart__wrapper">
-                        <div className="add_to_cart__title">Add to cart</div>
+                        {loading ? (
+                            <div className="add_to_cart__loading">
+                                <div className="add_to_cart__loading__wrapper">
+                                    <div className="add_to_cart__loading__content">
+                                        <div className="add_to_cart__loading__content__icon">
+                                            <i className="fas fa-spinner fa-spin"></i>
+                                        </div>
+                                        <div className="add_to_cart__loading__content__text">
+                                            <span>Adding to cart...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            ) : (
+                                <div className="add_to_cart__content">
+                                    <div className="add_to_cart__content__icon">
+                                        <i className="fas fa-shopping-cart"></i>
+                                    </div>
+                                    <div className="add_to_cart__content__text">
+                                        <span>Add to cart</span>
+                                    </div>
+                                </div>
+                            )}
                     </div>
                 </div>
             ) : (
