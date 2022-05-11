@@ -2,8 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link } from "gatsby";
 import { useQuery } from "@apollo/client";
 
-import { getUser, getTotalCartQty } from "../../../func/functions";
-import { GET_CART_ITEMS } from "../../apis/CartAPIs";
+import { getUser, getTotalCartQty, getQuantityCart } from "../../../func/functions";
 
 import { Context } from "../../../context";
 
@@ -15,6 +14,8 @@ const Minicart = () => {
 
     useEffect(() => {
         const user = getUser();
+
+        getQuantityCart(user.cart);
 
         const qtyCart = getTotalCartQty();
 
