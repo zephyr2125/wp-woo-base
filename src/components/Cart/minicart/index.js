@@ -63,9 +63,9 @@ const Minicart = () => {
                                 <tbody>
                                     {cart.map((item) => {
                                         return (
-                                            <tr key={item.product.node.id}>
+                                            <tr key={item.id}>
                                                 <td>
-                                                    <Link to={`/product/${item.product.node.slug}`}>{item.product.node.name}</Link>
+                                                    <Link to={`/product/${item.slug}`}>{item.name}</Link>
                                                 </td>
                                                 <td>{item.quantity}</td>
                                                 <td dangerouslySetInnerHTML={{ __html: item.total }} />
