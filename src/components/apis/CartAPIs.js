@@ -1,6 +1,6 @@
 import { gql } from "graphql-tag";
 
-export const ADD_TO_CART = gql `
+export const ADD_TO_CART = gql`
     mutation addToCart($productId: Int!, $quantity: Int!) {
         addToCart(input: {productId: $productId, quantity: $quantity}) {
         clientMutationId
@@ -11,7 +11,7 @@ export const ADD_TO_CART = gql `
     }
 `;
 
-export const GET_CART_ITEMS = gql `
+export const GET_CART_ITEMS = gql`
     query getCartItems {
         cart {
         total
@@ -34,4 +34,14 @@ export const GET_CART_ITEMS = gql `
         }
         }
     }
+`;
+
+export const CLEAR_CART = gql`
+    mutation clearCart {
+    emptyCart(input: {clearPersistentCart: true}) {
+      deletedCart {
+        isEmpty
+      }
+    }
+  }
 `;
