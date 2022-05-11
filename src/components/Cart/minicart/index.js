@@ -16,29 +16,17 @@ const Minicart = () => {
     useEffect(() => {
         const user = getUser();
 
-        if (!user.isLogin) {
-            const qtyCart = getTotalCartQty();
+        const qtyCart = getTotalCartQty();
 
-            setCart(user.cart);
+        setCart(user.cart);
 
-            setQty(qtyCart);
-        }
-
-        // if(user.isLogin){
-        //     setQty(0); 
-
-        //     const { data } = useQuery(GET_CART_ITEMS);
-
-        //     if(data){
-        //         setCart(data?.cart.contents.nodes);
-        //         setQty(data?.cart.contents.itemCount);
-        //     }
-        // }
+        setQty(qtyCart);
 
     }, [addCart]);
 
     const handlerShowMiniCart = () => {
         setShowMiniCart(!showMiniCart);
+        console.log(showMiniCart);
     }
 
 
@@ -68,7 +56,7 @@ const Minicart = () => {
                                                     <Link to={`/product/${item.slug}`}>{item.name}</Link>
                                                 </td>
                                                 <td>{item.quantity}</td>
-                                                <td dangerouslySetInnerHTML={{ __html: item.total }} />
+                                                <td dangerouslySetInnerHTML={{ __html: item.price }} />
                                             </tr>
                                         );
                                     })}
