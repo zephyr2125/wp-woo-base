@@ -2,9 +2,11 @@ import React from "react";
 import Seo from "../components/seo";
 import { gql, useQuery } from "@apollo/client";
 
-const  Product = ({ pageContext }) => {
-    const { product } = pageContext;
-    const GET_DATA = gql`
+import AddToCart from "../components/Cart/add-to-cart-button";
+
+const Product = ({ pageContext }) => {
+  const { product } = pageContext;
+  const GET_DATA = gql`
     query MyQuery2($id: ID!) {
         product(id: $id) {
             name
@@ -21,24 +23,31 @@ const  Product = ({ pageContext }) => {
   `;
 
   const { data } = useQuery(GET_DATA, {
-      variables: { id: product },
-    });
+    variables: { id: product },
+  });
 
-    return (
-      <div>
-        <Seo title={data?.product.name} />
-        <div className="product">
-            <div className="product__image">
-                <img src={data?.product.galleryImages.nodes[0].mediaItemUrl} alt="" />
-            </div>
-            <div className="product__info">
-                <div className="product__name">{data?.product.name}</div>
-                <div className="product__price">{data?.product.sku}</div>
-                <div className="product__description">{data?.product.description}</div>
-            </div>
+  return (
+    <div>
+      <Seo title={data?.product.name} />
+      <div className="product">
+        <div className="product__image">
+          <img src={data?.product.galleryImages.nodes[0].mediaItemUrl} alt="" />
+        </div>
+        <div className="product__info">
+          <div className="product__name">{data?.product.name}</div>
+          <div className="product__price">{data?.product.sku}</div>
+          <div className="product__description">{data?.product.description}</div>
+          {/* <AddToCart 
+                  idProduct={item.databaseId}
+                  quantity={1}
+                  price={item.price}
+                  name={item.name}
+                  slug={item.slug}
+                /> */}
         </div>
       </div>
-    )
-  }
+    </div>
+  )
+}
 
-  export default Product
+export default Product

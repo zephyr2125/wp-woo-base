@@ -15,16 +15,6 @@ import gql from "graphql-tag";
 
 const Seo = ({ description, lang, meta, title }) => {
 
-  const GET_SETTING_SEO = gql`
-    query getSettingSeo {
-      page(id: "cG9zdDoxMDQ=") {
-        seo {
-          enableSeoIndex
-        }
-      }
-    }
-  `;
-
   const { wp, wpUser } = useStaticQuery(
     graphql`
       query {
@@ -41,11 +31,8 @@ const Seo = ({ description, lang, meta, title }) => {
         }
       }
     `
-  )
+  ) 
 
-  const { data } = useQuery(GET_SETTING_SEO);
-  
-  const settingSeo = data?.page.seo.enableSeoIndex;
   const metaDescription = description || wp.generalSettings?.description
   const defaultTitle = wp.generalSettings?.title
 
@@ -90,8 +77,8 @@ const Seo = ({ description, lang, meta, title }) => {
           content: metaDescription,
         },
         {
-          name: `robots`,
-          content: settingSeo === "yes" ? `index, follow` : `noindex, nofollow`
+          name: `viewport`,
+          content: `initial-scale=1, width=device-width`,
         }
       ].concat(meta)}
     />
