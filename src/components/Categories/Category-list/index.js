@@ -37,27 +37,20 @@ const CategoryList = (props) => {
 
     const categoryList = props.categoryList
 
-    // const [categoryList, setCategoryList] = useState(props.categoryList)
     const [categoryId, setCategoryId] = useState('')
-    // useEffect(() => {
-    //     setCategoryList(props.categoryList);
-    // }, [props.categoryList])
-
-    const handleFilter = (e) => {
-        console.log("111")
-        const cateId = e.target.getAttribute('cate-id')
-        setCategoryId(cateId)
-        refetch()
-    }
 
     const { data, refetch } = useQuery(GET_DATA, {
         variables: { id: categoryId },
     });
 
+    const handleFilter = (e) => {
+        const cateId = e.target.getAttribute('cate-id')
+        setCategoryId(cateId)
+        // refetch()
+    }
+
     const { setProductListFilter } = useContext(Context)
     setProductListFilter(data?.productCategory.products)
-    console.log(categoryId)
-    console.log(data?.productCategory.products)
 
     return (
         <>
