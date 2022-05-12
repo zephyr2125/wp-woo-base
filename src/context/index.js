@@ -5,14 +5,14 @@ export const Context = React.createContext();
 export const AppProvider = (props) => {
 
     const [addCart, setAddCart] = useState();
-    const [productList, setProductList] = useState();
+    const [productListFilter, setProductListFilter] = useState();
     return (
         <Context.Provider
             value={{
                 addCart,
                 setAddCart,
-                productList,
-                setProductList
+                productListFilter,
+                setProductListFilter
             }}
         >
             {props.children}

@@ -41,10 +41,10 @@ const IndexPage = (props) => {
   return (
       <div className="home__container">
         <div className="home__wrapper">
-          <div>List Product</div>
+          <h3>List Product</h3>
           <div className="list_product" style={{ display:"flex", flexWrap: "wrap", gap: "20px" }} >
             {data &&
-              data?.products.nodes.map((item) => (
+              data?.nodes.map((item) => (
                 <div className="product" key={item.id} style={{ width:"calc(25% - 20px)" }}>
                   <div className="product__image">
                     <img src={item?.galleryImages?.nodes[0]?.sourceUrl} alt="" style={{ width:"100%" }}/>
