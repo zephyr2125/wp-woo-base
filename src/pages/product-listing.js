@@ -1,9 +1,9 @@
-import React from "react"
+import React, { useState, useContext, useEffect } from "react"
 import Seo from "../components/seo"
 import { gql, useQuery, useLazyQuery } from "@apollo/client"
 import ProductList from "../components/Product-list";
-// import { CATE_LIST } from "../components/Categories/Category-data/Category-list";
 import CategoryList from "../components/Categories/Category-list";
+import { Context } from "../context";
 
 const Categories = () => {
     const GET_CATEGORY_LIST = gql`
@@ -44,11 +44,29 @@ const Categories = () => {
       }
     }
     `;
-  
-    const { data:all_product } = useQuery(GET_ALL_PRODUCT);
+    
+    const { data:all_product } = useQuery(GET_ALL_PRODUCT)
+
+    const [allProduct, setallProduct] = useState(all_product)
+
+    const { productListFilter, setProductListFilter } = useContext(Context)
+
+    setProductListFilter(all_product?.products)
+
+    useEffect(() => {
+      setallProduct(productListFilter)
+    }, [productListFilter])
+
+    // console.log(all_product?.products.products)
+    let resultProduct
+
+    allProduct === undefined ? resultProduct = all_product?.products : resultProduct = productListFilter
+    console.log(resultProduct)
+    console.log("AAAAAAA")
+    // console.log(productListFilter)
+    
     const { data:category_list } = useQuery(GET_CATEGORY_LIST);
-    // const allProduct = 
-    // console.log(categoryList);
+
 
     return (
         <div className="categories" style={{marginTop: "100px"}}>
@@ -58,7 +76,7 @@ const Categories = () => {
                 <div className="price-container"></div>
             </div>
             <div className="product-ls" style={{width: "66.66%", display: "inline-block"}}>
-                <ProductList allProduct={all_product} />
+                <ProductList allProduct={resultProduct} />
             </div>
         </div>
     )

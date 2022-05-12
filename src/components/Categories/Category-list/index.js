@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import { gql, useQuery } from "@apollo/client"
+import { Context } from "../../../context";
 
 
 const CategoryList = (props) => {
@@ -43,7 +44,7 @@ const CategoryList = (props) => {
     // }, [props.categoryList])
 
     const handleFilter = (e) => {
-        // console.log("111")
+        console.log("111")
         const cateId = e.target.getAttribute('cate-id')
         setCategoryId(cateId)
         refetch()
@@ -53,11 +54,14 @@ const CategoryList = (props) => {
         variables: { id: categoryId },
     });
 
+    const { setProductListFilter } = useContext(Context)
+    setProductListFilter(data?.productCategory.products)
+    console.log(categoryId)
     console.log(data?.productCategory.products)
 
     return (
         <>
-            <div className=""></div>
+            <h4 className="categories-title">Categories</h4>
             {categoryList?.map( (category, index) => (
                 <div className="category-item" key={index} cate-id={category.id} onClick={handleFilter}>{category.name}</div>
             ) )}
