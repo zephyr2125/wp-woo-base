@@ -6,36 +6,6 @@ import { useQuery, gql } from "@apollo/client";
 import AddToCart from "../Cart/add-to-cart-button";
 
 const IndexPage = (props) => {
-  // const GET_DATA = gql`
-  // query getData {
-  //   products (first: 999999999) {
-  //     nodes {
-  //       sku
-  //       slug
-  //       name
-  //       id
-  //       galleryImages {
-  //         nodes {
-  //           sourceUrl
-  //         }
-  //       }
-  //       databaseId
-  //       ... on SimpleProduct {
-  //         id
-  //         name
-  //         price
-  //       }
-  //       ... on VariableProduct {
-  //         id
-  //         name
-  //         price
-  //       }
-  //     }
-  //   }
-  // }
-  // `;
-
-  // const { data } = useQuery(GET_DATA);
   const data = props.allProduct
 
   return (

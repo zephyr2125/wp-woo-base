@@ -46,27 +46,19 @@ const Categories = () => {
     `;
     
     const { data:all_product } = useQuery(GET_ALL_PRODUCT)
+    const { data:category_list } = useQuery(GET_CATEGORY_LIST);
 
     const [allProduct, setallProduct] = useState(all_product)
 
-    const { productListFilter, setProductListFilter } = useContext(Context)
-
-    setProductListFilter(all_product?.products)
+    const { productListFilter } = useContext(Context)
 
     useEffect(() => {
       setallProduct(productListFilter)
     }, [productListFilter])
 
-    // console.log(all_product?.products.products)
     let resultProduct
 
     allProduct === undefined ? resultProduct = all_product?.products : resultProduct = productListFilter
-    console.log(resultProduct)
-    console.log("AAAAAAA")
-    // console.log(productListFilter)
-    
-    const { data:category_list } = useQuery(GET_CATEGORY_LIST);
-
 
     return (
         <div className="categories" style={{marginTop: "100px"}}>
